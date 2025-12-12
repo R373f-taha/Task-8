@@ -29,6 +29,12 @@
    <button type="button" class="btn btn-sm btn-custom-pink">
         All Soft Deleted Blogs
     </button>
+
+    {{-- <form action="{{route('filterByCategoryID')}}" method='post'>
+        enter the category number to filter by it:
+        <input type='number' name='id'>
+         <button type="submit"  class="btn btn-sm btn-custom-pink">ok --}}
+
 </a><br><br> <div class="card-header d-flex justify-content-between align-items-center">
 
                     <a href="{{route('favList')}}">
@@ -65,9 +71,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @if(@empty($blogs){{No Data Yet}}
-{{--
-                            @endempty --}} 
+                            @if(@empty($blogs)){{__('No Data Yet')}}
+
+                            @endempty
                             @foreach ($blogs as $blog)
                             <tr>
                                 <td>{{ $blog->title }}</td>
@@ -96,8 +102,7 @@
                                     <form action="{{route('forceDelete',$blog->id)}}" method='post' class="m-0">
                                         @method('delete')
                                         @csrf
-                                        <button type="submit"  class="btn btn-sm btn-custom-pink">
-    >Force Delete</button>
+                                        <button type="submit"  class="btn btn-sm btn-custom-pink">Force Delete</button>
                                     </form>
                                 </td>
                                 <td>
@@ -116,6 +121,7 @@
                         </form>
                     </div>
                 </td>
+
             </tr>
         @endforeach
 

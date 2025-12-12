@@ -29,7 +29,7 @@ Route::get('add/favourite/blog/{blog_id}',[BlogController::class,'addToFavorite'
 
 Route::get('remove/blog/{id}/from/favorite',[BlogController::class,'removeFromFav'])->name('remove');
 
-Route::get('remove/filter/{id}/',[BlogController::class,'filterByCategoryID'])->name('filterByCategoryID');
+Route::post('filter/{id}',[BlogController::class,'filterByCategoryID'])->name('filterByCategoryID');
 });
 Route::middleware('Admin')->group(function () {
     Route::get('add/blog',[BlogController::class,'create'])->name('addBlog');

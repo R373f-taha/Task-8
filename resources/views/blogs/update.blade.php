@@ -31,14 +31,23 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Title:</label>
                             <input type="text" name="title" class="form-control" value="{{$blog->title}}">
+                               @error('title')
+                            {{$message}}
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="content" class="form-label">Content:</label>
                             <textarea name="content" class="form-control" >{{$blog->content}}</textarea>
+                               @error('content')
+                            {{$message}}
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image:</label>
                             <input type="file" name="image" class="form-control">
+                               @error('image')
+                            {{$message}}
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-sm btn-custom-pink">Update </button>
                     </form>

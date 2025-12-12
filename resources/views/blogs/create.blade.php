@@ -25,21 +25,29 @@
                 <div class="card-header">{{ __('Create Blog') }}</div>
 
                 <div class="card-body">
-                    
+
                     <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title:</label>
                             <input type="text" name="title" class="form-control" required>
+                            @error('title')
+                            {{$message}}
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="content" class="form-label">Content:</label>
                             <textarea name="content" class="form-control" required></textarea>
+                               @error('content')
+                            {{$message}}
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image:</label>
                             <input type="file" name="image" class="form-control" required>
-
+                               @error('image')
+                            {{$message}}
+                            @enderror
                         </div>
                          {{ __('**accepted image with png,jpg,gif,jpeg,jfif extentions and for the size must be 2048') }}
                         <br><br><button type="submit" class="btn btn-sm btn-custom-pink" >Save</button>
