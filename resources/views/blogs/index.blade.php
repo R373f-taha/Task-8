@@ -30,11 +30,7 @@
         All Soft Deleted Blogs
     </button>
 
-    {{-- <form action="{{route('filterByCategoryID')}}" method='post'>
-        enter the category number to filter by it:
-        <input type='number' name='id'>
-         <button type="submit"  class="btn btn-sm btn-custom-pink">ok --}}
-
+  
 </a><br><br> <div class="card-header d-flex justify-content-between align-items-center">
 
                     <a href="{{route('favList')}}">

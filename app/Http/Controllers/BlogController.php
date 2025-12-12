@@ -64,7 +64,7 @@ class BlogController extends Controller
 
       Blog::create($blog);//create the new blog
 
-     return redirect()->route('blogs.index')->with('success!');//redirect to the show page
+     return redirect()->route('blogs.index')->with('success','success creating');//redirect to the show page
 
     }
 
@@ -124,7 +124,7 @@ class BlogController extends Controller
 
          );
 
-            return redirect()->route('blogs.index')->with('success!');
+            return redirect()->route('blogs.index')->with('success','success display');
 
             }
     /**
@@ -144,7 +144,7 @@ class BlogController extends Controller
     {
     $blog->delete();
 
-    return redirect()->route('blogs.index')->with('success delete');
+    return redirect()->route('blogs.index')->with('success','success delete');
     }
 
 public function restoreBlog($id){//restore the blog
@@ -153,7 +153,7 @@ $blog=Blog::withTrashed()->find($id);//find the blog`s id
 
  $blog->restore();//restore it
 
-   return redirect()->route('blogs.index')->with('success restore');
+   return redirect()->route('blogs.index')->with('success','success restore');
 }
 
 public function allSoftDeleteRecords(){//only soft deleted blogs
@@ -173,7 +173,7 @@ public function allSoftDeleteRecords(){//only soft deleted blogs
 
     $blog->forceDelete();//delete it
 
-    return redirect()->route('blogs.index')->with('success force deleting');
+    return redirect()->route('blogs.index')->with('success','success force deleting');
 
 }
 
@@ -224,20 +224,16 @@ public function allSoftDeleteRecords(){//only soft deleted blogs
         return view('blogs.index',compact('blogs'));
   }
   public function addCategories(Request $request, $blog_id)
-{
+{//dd($request->all());dd('pp');
     if ($request->has('categories')) {
-        $categories = $request->input('categories'); // الحصول على مصفوفة الفئات المحددة
-    } else {
-        return redirect()->back()->with('error', 'No categories selected.');
-    }
-
+        $categories = $request->input('categories');
 
     $blog = Blog::findOrFail($blog_id);
 
     $blog->categories()->attach($categories);
 
-    return redirect()->back()->with('success', 'Categories added successfully!');
+    return redirect()->back()->with('success', 'Categories added successfully!');}
+    else return redirect()->back()->with('error', 'No categories selected.');
 }
-
 
 }

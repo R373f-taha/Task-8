@@ -15,3 +15,4 @@ Images are stored in the storage folder.
 Note: In the controller, the favorite functions may appear in red (as warnings), but they work perfectly fine.  
 
 images in storage/app/public/images
+and in public/storage/images
