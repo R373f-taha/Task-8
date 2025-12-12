@@ -223,14 +223,21 @@ public function allSoftDeleteRecords(){//only soft deleted blogs
       $blogs=Blog::where('category_id',$category_id)->get();
         return view('blogs.index',compact('blogs'));
   }
-  public function addCategories(Request $request,$blog_id){
+  public function addCategories(Request $request, $blog_id)
+{
+    if ($request->has('categories')) {
+        $categories = $request->input('categories'); // الحصول على مصفوفة الفئات المحددة
+    } else {
+        return redirect()->back()->with('error', 'No categories selected.');
+    }
 
-     if ($request->has('categories')) {
-        $categories = $request->input('categories');} // الحصول على مصفوفة الفئات المحددة
-      //  $blog_id = $request->input('blog_id'); }// الحصول على معرف المدونة
-   $blog=Blog::findOrFail($blog_id);
-   $blog->categories()->attach($categories);
 
-  }
+    $blog = Blog::findOrFail($blog_id);
+
+    $blog->categories()->attach($categories);
+
+    return redirect()->back()->with('success', 'Categories added successfully!');
+}
+
 
 }

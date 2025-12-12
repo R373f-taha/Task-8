@@ -21,8 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('favList',[BlogController::class,'favList'])->name('favList');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('blog/{id}/categories', [BlogController::class, 'addCategories'])->name('addCategories');
 
-Route::post('blog/{id}/categories',[BlogController::class, 'addCategories'])->name('add_categories');
 
 Route::get('add/favourite/blog/{blog_id}',[BlogController::class,'addToFavorite'])->name('add a favourite blog');
 

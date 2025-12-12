@@ -112,18 +112,18 @@
                                     <div style="max-height: 120px; overflow-y: auto; padding-right: 5px;">
 
         Select Categories
-<form action="{{ route('addCategories', ['category_id' => '']) }}" method="post" id="categoryForm_{{ $blog->id }}">
+<form action="{{ route('addCategories', ['id' => $blog->id]) }}" method="post" id="categoryForm_{{ $blog->id }}">
+    @csrf
+    <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+    @foreach ($categories as $category)
+        <div class="form-check">
+            <input type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}" class="form-check-input">
+            <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+        </div>
+    @endforeach
+    <button type="submit" class="btn btn-sm btn-custom-pink">Choose</button>
+</form>
 
-            @csrf
-            {{-- <input type="hidden" name="blog_id" value="{{ $blog->id }}"> --}}
-            @foreach ($categories as $category)
-                <div class="form-check">
-                    <input type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}" class="form-check-input">
-                    <label for="category_{{ $category->id }}">{{ $category->name }}</label>
-                </div>
-            @endforeach
-            <button type="submit" class="btn btn-sm btn-custom-pink">Choose</button>
-        </form>
     </div>
                 </td>
 

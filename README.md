@@ -13,3 +13,5 @@ Users, on the other hand, can view all blogs, add a blog to their favorites, rem
 Images are stored in the storage folder.  
 
 Note: In the controller, the favorite functions may appear in red (as warnings), but they work perfectly fine.  
+
+images in storage/app/public/images
