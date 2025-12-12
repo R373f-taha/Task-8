@@ -65,9 +65,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @if(@empty($blogs){{No Data Yet}} --}}
+                            {{-- @if(@empty($blogs){{No Data Yet}}
 {{--
-                            @endempty --}}
+                            @endempty --}} 
                             @foreach ($blogs as $blog)
                             <tr>
                                 <td>{{ $blog->title }}</td>
@@ -81,7 +81,7 @@
                                 </td>
 
                                 <td>
-                                   
+
                          <a href="{{ route('blogs.edit', $blog) }}" class="btn btn-sm btn-custom-pink">Edit</a>
 
                                 </td>
@@ -107,17 +107,19 @@
                                     <div style="max-height: 120px; overflow-y: auto; padding-right: 5px;">
                                         Select Categories
                                         <form>
-                                            @foreach($categories as $category)
-                                            <div class="form-check">
-                                                <input type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}" class="form-check-input">
-                                                  <label for="category_{{ $category->id }}">{{ $category->name }}</label>
-                                    @endforeach
-                                    <br><button type="submit" class="btn btn-sm btn-custom-pink" >choose this</button>
-                                </td>
-
-                            </tr>
+                                             @foreach($categories as $category)
+                                <div class="form-check">
+                                    <input type="checkbox" id="category_{{ $category->id }}" name="categories[]" value="{{ $category->id }}" class="form-check-input">
+                                    <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+                                </div>
                             @endforeach
-                        </tbody>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+
+</tbody>
                     </table>
                 </div>
             </div>

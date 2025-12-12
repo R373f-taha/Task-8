@@ -217,4 +217,11 @@ public function allSoftDeleteRecords(){//only soft deleted blogs
   return  redirect()->route('blogs.index');
   }
 
+
+  public function filterByCategoryID($category_id){
+
+      $blogs=Blog::where('category_id',$category_id)->get();
+        return view('blogs.index',compact('blogs'));
+  }
+
 }
