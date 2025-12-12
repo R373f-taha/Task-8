@@ -30,6 +30,9 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Title:</label>
                             <input type="text" name="name" class="form-control" required>
+                               @error('name')
+                            {{$message}}
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-sm btn-custom-pink">Save</button>

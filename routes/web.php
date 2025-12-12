@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::post('blog/{id}/add/categories',[BlogController::class, 'add_categories_to_blog'])->name('add_categories_to_blog');
+Route::post('blog/{id}/categories',[BlogController::class, 'addCategories'])->name('add_categories');
 
 Route::get('add/favourite/blog/{blog_id}',[BlogController::class,'addToFavorite'])->name('add a favourite blog');
 
@@ -30,6 +30,9 @@ Route::get('add/favourite/blog/{blog_id}',[BlogController::class,'addToFavorite'
 Route::get('remove/blog/{id}/from/favorite',[BlogController::class,'removeFromFav'])->name('remove');
 
 Route::post('filter/{id}',[BlogController::class,'filterByCategoryID'])->name('filterByCategoryID');
+
+Route::post('add/{category_id}/to/{blog_id}',[BlogController::class,'addCategories'])->name('addCategories');
+
 });
 Route::middleware('Admin')->group(function () {
     Route::get('add/blog',[BlogController::class,'create'])->name('addBlog');
